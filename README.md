@@ -18,19 +18,20 @@
 
 
 ### C Sharp Code Listing  
-* Start out by creating a new instance of Template:
+
+ Start out by creating a new instance of Template:
 	Template t = new Template();
 
-* Alternatively, you can specify a template directory: 
+ Alternatively, you can specify a template directory: 
 	Template t = new Template("templates");
 
-* Once the class is initialized, make sure the top most tag `OUTPUT` is assigned or parsed:
+ Once the class is initialized, make sure the top most tag `OUTPUT` is assigned or parsed:
 	t.parseTag("OUTPUT","Content.tmpl");	
 
-* Assign some values:
+ Assign some values:
 	t.assignTag("pageTitle", "Test Parse");
 	t.assignTag("body", "Foo bar");
 
-* Process:
+ Process:
 	string result = t.printTemplate();
 
