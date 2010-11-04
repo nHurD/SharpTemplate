@@ -8,7 +8,7 @@ using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace Org.nHurD
+namespace SharpTemplate
 {
 	
 	
@@ -22,8 +22,8 @@ namespace Org.nHurD
 		/* Assign template variables based on the properties 
 		 * found within the object
 		*/
-		void assignObject ( ref object p_object );
-		void assignObject ( ref object p_object, string p_prefix );
+		void assignObject ( object p_object );
+		void assignObject ( object p_object, string p_prefix );
 		
 		
 		/* Single tag assignment */
@@ -36,35 +36,35 @@ namespace Org.nHurD
 		/* Parse a DataTable Object */
 		void parseDataTable ( string p_rowTag, 
 			string p_rowTemplateFile, 
-			ref System.Data.DataTable p_table, 
+			System.Data.DataTable p_table, 
 			string p_prefix);
 			
 		void parseDataTable ( string p_rowTag, 
 			string p_rowTemplateFile, 
-			ref System.Data.DataTable p_table );
+			System.Data.DataTable p_table );
 			
 		/* Parase an individual DataRow object */
 		string parseDataRow (  
 			string p_rowTemplateFile,
-			ref System.Data.DataColumnCollection p_cols,
+			System.Data.DataColumnCollection p_cols,
 			System.Data.DataRow p_row,
 			string p_prefix);
 			
 		string parseDataRow (  
 			string p_rowTemplateFile,
-			ref System.Data.DataColumnCollection p_cols,
+			System.Data.DataColumnCollection p_cols,
 			System.Data.DataRow p_row);
 		
 			
 		/* Parse an array of objects */
 		void parseObjectCollection ( string p_rowTag,
 			string p_rowTemplateFile,
-			ref object[] p_objects,
+			object[] p_objects,
 			string p_prefix);
 		
 		void parseObjectCollection ( string p_rowTag,
 			string p_rowTemplateFile,
-			ref object[] p_objects);
+			object[] p_objects);
 			
 		
 		

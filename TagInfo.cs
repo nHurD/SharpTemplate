@@ -6,9 +6,9 @@
 ******************************************************************/
 using System;
 
-namespace Org.nHurD
+namespace SharpTemplate
 {		
-	public struct TagInfo
+	internal struct TagInfo
 	{
 		public string tagName;
 		public object tagValue;
