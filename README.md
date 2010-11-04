@@ -16,7 +16,7 @@
 >		</body>
 >	</html>
 
-----
+
 ### C# Code Listing
 * Start out by creating a new instance of Template:
 	Template t = new Template();
