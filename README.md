@@ -40,3 +40,14 @@
  Process:
 	string result = t.printTemplate();
 
+ Result:
+	 <html>
+        <head>
+            <title>Test Parse</title>
+        </head>
+        <body>
+            <h1>This is a Test!</h1>
+			<p> This is content from another file.</p>
+			<p> This is an assigned tag: Hello World!</p>
+        </body>
+    </html>
