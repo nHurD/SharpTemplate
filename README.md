@@ -6,17 +6,18 @@
 ### Template Format
 
  Content.tmpl:
->	<html>
->		<head>
->			<title>{pageTitle}</title>
->		</head>
->		<body>
->			<h1>This is a Test!</h1>
->			<p>{body}</p>
->		</body>
+	<html>
+		<head>
+			<title>{pageTitle}</title>
+		</head>
+		<body>
+			<h1>This is a Test!</h1>
+			<p>{body}</p>
+		</body>
+	&lt;html&gt;
 
 
-### C Sharp Code Listing  
+### C# Code Listing  
 
  Start out by creating a new instance of Template:
 	Template t = new Template();
