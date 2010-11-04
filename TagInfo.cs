@@ -6,7 +6,7 @@
 ******************************************************************/
 using System;
 
-namespace Org.nHurD
+namespace SharpTemplate
 {		
 	public struct TagInfo
 	{

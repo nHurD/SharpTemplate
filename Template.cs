@@ -13,7 +13,7 @@ using System.Reflection.Emit;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Org.nHurD
+namespace SharpTemplate
 {
 	
 	
