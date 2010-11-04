@@ -8,7 +8,7 @@ using System;
 
 namespace SharpTemplate
 {		
-	public struct TagInfo
+	internal struct TagInfo
 	{
 		public string tagName;
 		public object tagValue;

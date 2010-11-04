@@ -119,19 +119,19 @@ namespace SharpTemplate
 			System.Text.RegularExpressions.Regex reg =  new System.Text.RegularExpressions.Regex(@"{.*?}.*?");
 				
 				
-				Match match = reg.Match(_getTagValue(p_tag, String.Empty));
+			Match match = reg.Match(_getTagValue(p_tag, String.Empty));
+			
+			if (match.Length > 0) {
 				
-				if (match.Length > 0) {
-					
-					while (match.Success) {
-						_return.Add(match.Value.Replace("{","").Replace("}",""));
-						match = match.NextMatch();
-					}
-					
-					
+				while (match.Success) {
+					_return.Add(match.Value.Replace("{","").Replace("}",""));
+					match = match.NextMatch();
 				}
 				
-				return _return;
+				
+			}
+			
+			return _return;
 		}
 		
 		
@@ -141,18 +141,18 @@ namespace SharpTemplate
 		}
 		
 		/* Create and assign tags based on properties in the object */
-		public void assignObject ( ref object p_object, string p_prefix ) {
+		public void assignObject ( object p_object, string p_prefix ) {
 			
 			foreach (PropertyInfo property in p_object.GetType().GetProperties()) {
 				TagInfo tmp = new TagInfo();
-				object tmpValue = null;
 				tmp.tagName = property.Name;
 				
 				/* Sanity Check. Ensure no null value */
-				tmpValue = property.GetValue(p_object, null);
-				if (tmpValue == null) tmpValue = String.Empty;
+				tmp.tagValue = property.GetValue(p_object, null);
 				
-				tmp.tagValue = tmpValue;
+				if (tmp.tagValue == null) 
+					tmp.tagValue = String.Empty;
+								
 				
 				/* Add the tag to the collection */
 				_tagCollection.Add(tmp);
@@ -160,8 +160,8 @@ namespace SharpTemplate
 			
 		}
 		
-		public void assignObject ( ref object p_object ) {
-			assignObject ( ref p_object, "");
+		public void assignObject ( object p_object ) {
+			assignObject (  p_object, "");
 		}
 		
 		/* Individually assign a tagvalue */
@@ -190,7 +190,7 @@ namespace SharpTemplate
 			
 			try {
 				System.IO.StreamReader reader = new System.IO.StreamReader(
-					this._templateDirectory + "/" + p_fileName);
+					this._templateDirectory + System.IO.Path.DirectorySeparatorChar + p_fileName);
 				tmp.tagValue = reader.ReadToEnd();
 				
 				reader.Close();
@@ -211,7 +211,7 @@ namespace SharpTemplate
 		
 		/* Go through a DataTable object and assign the values in the columns */
 		public void parseDataTable ( 
-			string p_rowTag, string p_rowTemplateFile, ref System.Data.DataTable p_table, string p_prefix) {
+			string p_rowTag, string p_rowTemplateFile, System.Data.DataTable p_table, string p_prefix) {
 			
 			string tagValue = "";
 			string rowTemplate = "";
@@ -220,8 +220,9 @@ namespace SharpTemplate
 			
 			
 			try { 
+				
 				System.IO.StreamReader reader = new System.IO.StreamReader(
-					_templateDirectory + "/" + p_rowTemplateFile);
+					_templateDirectory + System.IO.Path.DirectorySeparatorChar + p_rowTemplateFile);
 				rowTemplate = reader.ReadToEnd();
 				reader.Close();
 			} catch {
@@ -275,15 +276,15 @@ namespace SharpTemplate
 		}
 		
 		public void parseDataTable (
-			string p_rowTag, string p_rowTemplateFile, ref System.Data.DataTable p_table ) {
+			string p_rowTag, string p_rowTemplateFile, System.Data.DataTable p_table ) {
 			
-			parseDataTable ( p_rowTag, p_rowTemplateFile, ref p_table, "" );
+			parseDataTable ( p_rowTag, p_rowTemplateFile, p_table, "" );
 			
 		}
 		
 		public string parseDataRow (  
 			string p_rowTemplateFile,
-			ref System.Data.DataColumnCollection p_cols,
+			System.Data.DataColumnCollection p_cols,
 			System.Data.DataRow p_row,
 			string p_prefix) {
 			
@@ -291,7 +292,7 @@ namespace SharpTemplate
 			
 			try { 
 				System.IO.StreamReader reader = new System.IO.StreamReader(
-					_templateDirectory + "/" + p_rowTemplateFile);
+					_templateDirectory + System.IO.Path.DirectorySeparatorChar + p_rowTemplateFile);
 				_return = reader.ReadToEnd();
 				reader.Close();
 			} catch {
@@ -307,10 +308,10 @@ namespace SharpTemplate
 			
 		public string parseDataRow (  
 			string p_rowTemplateFile,
-			ref System.Data.DataColumnCollection p_cols,
+			System.Data.DataColumnCollection p_cols,
 			System.Data.DataRow p_row) {
 			
-			return parseDataRow (p_rowTemplateFile, ref p_cols, p_row, "");
+			return parseDataRow (p_rowTemplateFile, p_cols, p_row, "");
 			
 		}
 			
@@ -318,7 +319,7 @@ namespace SharpTemplate
 		/* Parse an array of objects */
 		public void parseObjectCollection ( string p_rowTag,
 			string p_rowTemplateFile,
-			ref object[] p_objects,
+			object[] p_objects,
 			string p_prefix) {
 			
 			TagInfo tmp = new TagInfo();
@@ -330,7 +331,7 @@ namespace SharpTemplate
 			/* open the row template file and store it in rowTemplate */
 			try { 
 				System.IO.StreamReader reader = new System.IO.StreamReader(
-					_templateDirectory + "/" + p_rowTemplateFile);
+					_templateDirectory + System.IO.Path.DirectorySeparatorChar + p_rowTemplateFile);
 				rowTemplate = reader.ReadToEnd();
 				reader.Close();
 			} catch {
@@ -388,20 +389,24 @@ namespace SharpTemplate
 		
 		public void parseObjectCollection ( string p_rowTag,
 			string p_rowTemplateFile,
-			ref object[] p_objects) {
+			object[] p_objects) {
 			
-			parseObjectCollection(p_rowTag, p_rowTemplateFile, ref p_objects, "");
+			parseObjectCollection(p_rowTag, p_rowTemplateFile, p_objects, "");
 			
 		}
 		
 		
 		/* output the template */
 		public string printTemplate () {
-			string _return = _parseTemplate ( "OUTPUT" );
-			
-			return _return;
+						
+			return _parseTemplate ( "OUTPUT" );
 						
 		}		
+		
+		public override string ToString ()
+		{
+			return _parseTemplate ( "OUTPUT" );
+		}
 		
 		
 		
