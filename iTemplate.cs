@@ -1,7 +1,7 @@
 /******************************************************************
 ** File Name:		iTemplate.cs 
 ** Creation Date: 	Saturday February 10, 2007 
-** Original Author: Jonathan R. Steele (jrsteele@nhurd.org)
+** Original Author: Jonathan R. Steele (jrsteele@gmail.com)
 ** Description:		Base implementation for templating
 ******************************************************************/
 using System;

@@ -1,7 +1,7 @@
 /******************************************************************
 ** File Name:		Template.cs 
 ** Creation Date: 	Saturday February 10, 2007 
-** Original Author: Jonathan R. Steele (jrsteele@nhurd.org)
+** Original Author: Jonathan R. Steele (jrsteele@gmail.com)
 ** Description:		Implement iTemplate for generic templating
 **					This is based loosely on the FastTemplate class
 **					that was written in PHP(3/4/5)
