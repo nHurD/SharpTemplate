@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<UserCombinePreferences filename="/home/jrsteele/Projects/Templating/Templating.mds">
+  <Files>
+    <File filename="Welcome" />
+    <File filename="./Template.cs" />
+  </Files>
+  <Views>
+    <ViewMemento Id="MonoDevelop.Ide.Gui.Pads.ProjectPad">
+      <TreeView>
+        <Node expanded="True">
+          <Node name="Templating" expanded="True">
+            <Node name="Template.cs" expanded="False" selected="True" />
+          </Node>
+        </Node>
+      </TreeView>
+    </ViewMemento>
+    <ViewMemento Id="MonoDevelop.Ide.Gui.Pads.ClassPad">
+      <TreeView>
+        <Node expanded="True" />
+      </TreeView>
+    </ViewMemento>
+  </Views>
+  <Properties>
+    <Properties>
+      <Property key="ActiveConfiguration" value="Debug" />
+      <Property key="ActiveWindow" value="/home/jrsteele/Projects/Templating/Template.cs" />
+    </Properties>
+  </Properties>
+</UserCombinePreferences>
