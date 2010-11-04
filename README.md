@@ -14,7 +14,7 @@
 			<h1>This is a Test!</h1>
 			<p>{body}</p>
 		</body>
-	&lt;html&gt;
+	</html>
 
 
 ### C# Code Listing  
